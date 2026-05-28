@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clasificador de residuos</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Clasificador de residuos</h1>
+      <p class="subtitle">Usa la cámara para capturar un residuo o sube una imagen. Te diremos origen, material, reciclabilidad y degradabilidad.</p>
+    </header>
+
+    <!-- Opción inicial: cámara o subir -->
+    <section class="choice-section" id="choiceSection">
+      <button type="button" class="btn btn-primary btn-block" id="useCameraBtn">
+        <span class="btn-icon">📷</span> Usar cámara del dispositivo
+      </button>
+      <p class="choice-divider">o</p>
+      <div class="upload-zone upload-zone-small" id="uploadZone">
+        <input type="file" id="fileInput" accept="image/*" hidden>
+        <span class="upload-icon">🖼️</span>
+        <p>Subir una imagen desde el dispositivo</p>
+      </div>
+    </section>
+
+    <!-- Vista de cámara -->
+    <section class="camera-section" id="cameraSection" hidden>
+      <div class="camera-wrapper">
+        <video id="cameraVideo" autoplay playsinline muted></video>
+        <canvas id="captureCanvas" hidden></canvas>
+      </div>
+      <p class="camera-hint">Apunta al residuo y pulsa Capturar</p>
+      <div class="camera-actions">
+        <button type="button" class="btn btn-primary" id="captureBtn">Capturar foto</button>
+        <button type="button" class="btn btn-secondary" id="stopCameraBtn">Cerrar cámara</button>
+      </div>
+      <p class="link-upload"><button type="button" class="btn-link" id="switchToUploadBtn">Subir imagen en su lugar</button></p>
+    </section>
+
+    <!-- Vista previa (después de capturar o subir) -->
+    <section class="preview" id="previewSection" hidden>
+      <img id="previewImg" alt="Vista previa">
+      <div class="preview-actions">
+        <button type="button" class="btn btn-primary" id="classifyBtn">Clasificar residuo</button>
+        <button type="button" class="btn btn-secondary" id="clearBtn">Tomar otra foto / Subir otra</button>
+      </div>
+    </section>
+
+    <section class="loading" id="loadingSection" hidden>
+      <div class="spinner"></div>
+      <p>Analizando imagen…</p>
+    </section>
+
+    <section class="results" id="resultsSection" hidden>
+      <h2>Resultado</h2>
+      <div id="resultsList"></div>
+      <p class="meta" id="metaInfo"></p>
+    </section>
+
+    <section class="error" id="errorSection" hidden>
+      <p id="errorText"></p>
+    </section>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

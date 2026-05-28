@@ -1,0 +1,14 @@
+{
+  "name": "disaster-monitoring-platform",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "types:gen": "supabase gen types typescript --project-id hhurrytpyuujjvrlizzi > src/types/database.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  }
+}
